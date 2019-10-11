@@ -18,16 +18,24 @@ class WeatherAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGetWeatherDataFromJSON() {
+        guard let jsonPath = Bundle.main.path(forResource: "weather", ofType: "json"),
+                let jsonData = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)) else {
+                    fatalError("Test JSON data not found")
+            }
+            
+            // Act
+            var weather = [Weather]()
+            
+            do {
+                weather = try Weather.decodeWeatherFromData(from: jsonData)
+            }
+            catch {
+                print(error)
+            }
+            
+            // Assert
+            XCTAssertTrue(weather.count == 20, "Was expecting 20 elements, but found \(weather.count)")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
 }

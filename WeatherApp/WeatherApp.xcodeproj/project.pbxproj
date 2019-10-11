@@ -30,6 +30,7 @@
 		EA0EF67E23512C8100A1D6D0 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF67D23512C8100A1D6D0 /* ImageHelper.swift */; };
 		EA0EF68123512CA200A1D6D0 /* WeatherAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF68023512CA200A1D6D0 /* WeatherAPIClient.swift */; };
 		EA0EF68323512CAE00A1D6D0 /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF68223512CAE00A1D6D0 /* ImageAPIClient.swift */; };
+		EA0EF6852351313200A1D6D0 /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = EA0EF6842351313200A1D6D0 /* weather.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		EA0EF67D23512C8100A1D6D0 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		EA0EF68023512CA200A1D6D0 /* WeatherAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIClient.swift; sourceTree = "<group>"; };
 		EA0EF68223512CAE00A1D6D0 /* ImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIClient.swift; sourceTree = "<group>"; };
+		EA0EF6842351313200A1D6D0 /* weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = weather.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			children = (
 				EA0EF66D23512AF700A1D6D0 /* WeatherAppTests.swift */,
 				EA0EF66F23512AF700A1D6D0 /* Info.plist */,
+				EA0EF6842351313200A1D6D0 /* weather.json */,
 			);
 			path = WeatherAppTests;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA0EF6852351313200A1D6D0 /* weather.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

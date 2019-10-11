@@ -21,6 +21,7 @@
 		EA0EF660235128C700A1D6D0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF65F235128C700A1D6D0 /* PersistenceManager.swift */; };
 		EA0EF6622351292400A1D6D0 /* ImagePersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF6612351292400A1D6D0 /* ImagePersistenceHelper.swift */; };
 		EA0EF6642351296800A1D6D0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF6632351296800A1D6D0 /* Image.swift */; };
+		EA0EF66623512A3700A1D6D0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF66523512A3700A1D6D0 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		EA0EF65F235128C700A1D6D0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		EA0EF6612351292400A1D6D0 /* ImagePersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePersistenceHelper.swift; sourceTree = "<group>"; };
 		EA0EF6632351296800A1D6D0 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		EA0EF66523512A3700A1D6D0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				548CE065234D33E600B5177D /* ZipCodeHelper.swift */,
+				EA0EF66523512A3700A1D6D0 /* Weather.swift */,
 				EA0EF6632351296800A1D6D0 /* Image.swift */,
 			);
 			path = Models;
@@ -209,6 +212,7 @@
 				EA0EF6622351292400A1D6D0 /* ImagePersistenceHelper.swift in Sources */,
 				548CE056234D33B500B5177D /* WeatherViewController.swift in Sources */,
 				548CE052234D33B500B5177D /* AppDelegate.swift in Sources */,
+				EA0EF66623512A3700A1D6D0 /* Weather.swift in Sources */,
 				EA0EF6562351280800A1D6D0 /* CityDetailViewController.swift in Sources */,
 				548CE054234D33B500B5177D /* SceneDelegate.swift in Sources */,
 				EA0EF6582351281900A1D6D0 /* FavoriteImagesViewController.swift in Sources */,

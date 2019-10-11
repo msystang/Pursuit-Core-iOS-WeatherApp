@@ -17,7 +17,7 @@ class ImageAPIClient {
     // MARK: - Instance Methods
     
     static func getSearchResultsURLStr(from searchString: String) -> String {
-        return "*URLSTRING*"
+        return "https://pixabay.com/api/?key=\(Secrets.pixabayAPIKey)&q=\(searchString)"
     }
     
     func getImage(urlStr: String, completionHandler: @escaping (Result<[Image], AppError>) -> ())  {

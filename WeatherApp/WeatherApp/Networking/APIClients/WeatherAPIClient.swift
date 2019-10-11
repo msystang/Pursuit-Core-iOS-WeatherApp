@@ -16,8 +16,8 @@ class WeatherAPIClient {
     
     // MARK: - Instance Methods
     
-    static func getSearchResultsURLStr(from searchString: String) -> String {
-        return "*URLSTRING*"
+    static func getSearchResultsURLStr(from latitude: String, longitude: String) -> String {
+        return "https://api.darksky.net/forecast/\(Secrets.darkSkyAPIKey)/\(latitude),\(longitude)"
     }
     
     func getWeather(urlStr: String, completionHandler: @escaping (Result<[Weather], AppError>) -> ())  {

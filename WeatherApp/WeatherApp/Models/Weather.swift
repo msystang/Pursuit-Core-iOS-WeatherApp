@@ -9,5 +9,8 @@
 import Foundation
 
 struct Weather: Codable {
-    
+    static func decodeWeatherFromData(from jsonData: Data) throws -> [Weather] {
+        let response = try JSONDecoder().decode([Weather].self, from: jsonData)
+        return response
+    }
 }

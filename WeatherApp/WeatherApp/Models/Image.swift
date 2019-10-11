@@ -9,5 +9,8 @@
 import Foundation
 
 struct Image: Codable {
-    
+    static func decodeImageFromData(from jsonData: Data) throws -> [Image] {
+         let response = try JSONDecoder().decode([Image].self, from: jsonData)
+         return response
+     }
 }

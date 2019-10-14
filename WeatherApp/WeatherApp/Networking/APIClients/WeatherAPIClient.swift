@@ -20,7 +20,7 @@ class WeatherAPIClient {
         return "https://api.darksky.net/forecast/\(Secrets.darkSkyAPIKey)/\(latitude),\(longitude)?exclude=[minutely,hourly,alerts,flags]"
     }
     
-    func getWeather(urlStr: String, completionHandler: @escaping (Result<[Weather], AppError>) -> ())  {
+    func getWeather(urlStr: String, completionHandler: @escaping (Result<[Forecast], AppError>) -> ())  {
         
         guard let url = URL(string: urlStr) else {
             print(AppError.badURL)
@@ -34,7 +34,7 @@ class WeatherAPIClient {
             case .success(let data):
                 do {
                     let weatherInfo = try Weather.decodeWeatherFromData(from: data)
-                    completionHandler(.success(weatherInfo))
+                    completionHandler(.success(weatherInfo.daily.data))
                 }
                 catch {
                     completionHandler(.failure(.couldNotParseJSON(rawError: error)))

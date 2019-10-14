@@ -19,23 +19,32 @@ class WeatherAppTests: XCTestCase {
     }
 
     func testGetWeatherDataFromJSON() {
-        guard let jsonPath = Bundle.main.path(forResource: "weather", ofType: "json"),
-                let jsonData = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)) else {
-                    fatalError("Test JSON data not found")
-            }
+        // Arrange
+        guard let jsonPath = Bundle.main.path(forResource: "weather", ofType: "json") else {
+            fatalError("JSON file not found")
+        }
+        
+        var jsonData = Data()
+        
+        do {
+            jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonPath))
+        } catch {
+            print(error)
+        }
+        
+        // Act
+        var forecast = [Forecast]()
             
-            // Act
-            var weather = [Weather]()
+        do {
+            let weatherInfo = try Weather.decodeWeatherFromData(from: jsonData)
+                forecast = weatherInfo.daily.data
+        }
+        catch {
+            print(error)
+        }
             
-            do {
-                weather = try Weather.decodeWeatherFromData(from: jsonData)
-            }
-            catch {
-                print(error)
-            }
-            
-            // Assert
-            XCTAssertTrue(weather.count == 20, "Was expecting 20 elements, but found \(weather.count)")
+        // Assert
+        XCTAssertTrue(forecast.count == 8, "Was expecting 8 elements, but found \(forecast.count)")
     }
     
 }

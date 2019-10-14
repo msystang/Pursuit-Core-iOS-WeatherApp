@@ -31,6 +31,7 @@
 		EA0EF68123512CA200A1D6D0 /* WeatherAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF68023512CA200A1D6D0 /* WeatherAPIClient.swift */; };
 		EA0EF68323512CAE00A1D6D0 /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF68223512CAE00A1D6D0 /* ImageAPIClient.swift */; };
 		EA0EF6852351313200A1D6D0 /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = EA0EF6842351313200A1D6D0 /* weather.json */; };
+		EA0EF6C6235524DA00A1D6D0 /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = EA0EF6842351313200A1D6D0 /* weather.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +286,7 @@
 			files = (
 				548CE05E234D33B600B5177D /* LaunchScreen.storyboard in Resources */,
 				548CE068234D340700B5177D /* Assets.xcassets in Resources */,
+				EA0EF6C6235524DA00A1D6D0 /* weather.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

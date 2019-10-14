@@ -175,9 +175,9 @@
 		EA0EF66C23512AF700A1D6D0 /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				EA0EF6842351313200A1D6D0 /* weather.json */,
 				EA0EF66D23512AF700A1D6D0 /* WeatherAppTests.swift */,
 				EA0EF66F23512AF700A1D6D0 /* Info.plist */,
-				EA0EF6842351313200A1D6D0 /* weather.json */,
 			);
 			path = WeatherAppTests;
 			sourceTree = "<group>";

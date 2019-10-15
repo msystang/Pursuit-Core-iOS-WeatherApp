@@ -15,16 +15,18 @@ class WeatherViewController: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
-        label.text = "Label"
+        label.text = "Enter ZipCode"
         return label
     }()
     
-    lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.barStyle = .default
-        searchBar.delegate = self
-        return searchBar
+    lazy var textField: UITextField = {
+        let textField = UITextField()
+        textField.delegate = self
+        textField.backgroundColor = .lightGray
+        textField.textAlignment = .center
+        return textField
     }()
+    
     
     lazy var weatherCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -45,10 +47,15 @@ class WeatherViewController: UIViewController {
     
     private var searchString: String? {
         didSet {
+            loadLatLongFromZip()
+            loadData()
             self.weatherCollectionView.reloadData()
         }
     }
 
+    private var latitude = String()
+    private var longitude = String()
+    
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,26 +63,25 @@ class WeatherViewController: UIViewController {
         
         addSubviews()
         addConstraints()
-        loadData()
     }
 
     // MARK: - Private Functions
-    private func loadData() {
-        var latitude = String()
-        var longitude = String()
-        
+    private func loadLatLongFromZip() {
         ZipCodeHelper.getLatLong(fromZipCode: searchString ?? "") { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
                     print(error)
                 case .success(let data):
-                    latitude = String(data.lat)
-                    longitude = String(data.long)
+                    self.latitude = String(data.lat)
+                    self.longitude = String(data.long)
+                    self.loadData()
                 }
             }
         }
-        
+    }
+    
+    private func loadData() {
         let urlStr = WeatherAPIClient.getSearchResultsURLStr(from: latitude, longitude: longitude)
         
         WeatherAPIClient.manager.getWeather(urlStr: urlStr) { (result) in
@@ -93,13 +99,13 @@ class WeatherViewController: UIViewController {
     // MARK: UI Object Constraints
     private func addSubviews() {
         self.view.addSubview(locationLabel)
-        self.view.addSubview(searchBar)
+        self.view.addSubview(textField)
         self.view.addSubview(weatherCollectionView)
     }
     
     private func addConstraints() {
         setLocationLabelConstraints()
-        setSearchBarConstraints()
+        setTextFieldConstraints()
         setCollectionViewConstraints()
     }
     
@@ -114,15 +120,14 @@ class WeatherViewController: UIViewController {
         ])
     }
     
-    private func setSearchBarConstraints() {
-        self.searchBar.translatesAutoresizingMaskIntoConstraints = false
+    private func setTextFieldConstraints() {
+        self.textField.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.searchBar.topAnchor.constraint(equalTo: self.locationLabel.bottomAnchor, constant: 5),
-            self.searchBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.searchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.searchBar.heightAnchor.constraint(equalToConstant: 50),
-            self.searchBar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.textField.topAnchor.constraint(equalTo: self.locationLabel.bottomAnchor, constant: 5),
+            self.textField.widthAnchor.constraint(equalToConstant: 100),
+            self.textField.heightAnchor.constraint(equalToConstant: 30),
+            self.textField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
     }
     
@@ -130,7 +135,7 @@ class WeatherViewController: UIViewController {
         self.weatherCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.weatherCollectionView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor, constant: 20),
+            self.weatherCollectionView.topAnchor.constraint(equalTo: self.textField.bottomAnchor, constant: 20),
             self.weatherCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.weatherCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             self.weatherCollectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
@@ -150,8 +155,14 @@ extension WeatherViewController: UICollectionViewDataSource {
         let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCollectionViewCell
         let dailyWeather = weather[indexPath.row]
         
-        // Add image
-        // Add High and Low temp labels
+        // TODO: Convert time to date format
+        cell.dateLabel.text = String(dailyWeather.time)
+        
+        // TODO: Create func to find correct image
+        cell.weatherImageView.image = UIImage(named: "clear")
+        
+        cell.highTempLabel.text = String(dailyWeather.temperatureHigh)
+        cell.lowTempLabel.text = String(dailyWeather.temperatureLow)
         
         return cell
     }
@@ -163,9 +174,10 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
     // make flow horizontal
 }
 
-// MARK: - SearchBar Delegate Methods
-extension WeatherViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchString = searchText.lowercased()
+// MARK: - TextField Delegate Methods
+extension WeatherViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchString = textField.text
+        return true
     }
 }

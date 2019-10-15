@@ -23,6 +23,7 @@ class WeatherViewController: UIViewController {
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: "weatherCell")
         return collectionView
     }()
     
@@ -51,7 +52,8 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        weatherCollectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: "weatherCell")
+        
+        loadData()
     }
 
     // MARK: - Private Functions

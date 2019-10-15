@@ -13,6 +13,7 @@ class CityDetailViewController: UIViewController {
     lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        //TODO: Convert time
         label.text = "Weather Forecast for \(locationName!) on \(selectedForecast.time.description)"
         
         return label
@@ -33,42 +34,44 @@ class CityDetailViewController: UIViewController {
     lazy var highTempLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = String(selectedForecast.temperatureHigh)
+        label.text = "High: \(selectedForecast.temperatureHigh) °F"
         return label
     }()
     
     lazy var lowTempLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = String(selectedForecast.temperatureLow)
+        label.text = "Low: \(selectedForecast.temperatureLow) °F"
         return label
     }()
     
     lazy var sunriseLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = String(selectedForecast.sunriseTime)
+        //TODO: Convert time
+        label.text = "Sunrise: \(selectedForecast.sunriseTime)"
         return label
     }()
     
     lazy var sunsetLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = String(selectedForecast.sunsetTime)
+        //TODO: Convert time
+        label.text = "Sunset: \(selectedForecast.sunsetTime)"
         return label
     }()
     
     lazy var windSpeedLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = String(selectedForecast.windSpeed)
+        label.text = "Wind Speed: \(selectedForecast.windSpeed) mph"
         return label
     }()
     
     lazy var precipChanceLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = String(selectedForecast.precipProbability)
+        label.text = "Chance of Precipitation: \(selectedForecast.precipProbability*100)%"
         return label
     }()
     
@@ -143,7 +146,7 @@ class CityDetailViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             self.labelStackView.topAnchor.constraint(equalTo: self.currentWeatherLabel.bottomAnchor, constant: 5),
-            self.labelStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 5),
+            self.labelStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 10),
             self.labelStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             self.labelStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
         ])

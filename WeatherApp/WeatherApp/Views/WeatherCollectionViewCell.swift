@@ -12,6 +12,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     // make variables for cell objects (image, date, high, low temp labels)
     lazy var dateLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
         return label
     }()
     

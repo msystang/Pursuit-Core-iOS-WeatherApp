@@ -168,8 +168,8 @@ extension WeatherViewController: UICollectionViewDataSource {
         // TODO: Create func to find correct image
         cell.weatherImageView.image = UIImage(named: "clear")
         
-        cell.highTempLabel.text = "High: \(dailyWeather.temperatureHigh)"
-        cell.lowTempLabel.text = "Low: \(dailyWeather.temperatureLow)"
+        cell.highTempLabel.text = "High: \(dailyWeather.temperatureHigh) °F"
+        cell.lowTempLabel.text = "Low: \(dailyWeather.temperatureLow) °F"
         
         return cell
     }

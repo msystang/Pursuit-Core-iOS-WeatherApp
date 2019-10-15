@@ -40,7 +40,7 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    private var searchWord: String? {
+    private var searchString: String? {
         didSet {
             weatherCollectionView.reloadData()
         }
@@ -59,7 +59,7 @@ class WeatherViewController: UIViewController {
         var latitude = String()
         var longitude = String()
         
-        ZipCodeHelper.getLatLong(fromZipCode: searchWord ?? "") { (result) in
+        ZipCodeHelper.getLatLong(fromZipCode: searchString ?? "") { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
@@ -113,6 +113,6 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - SearchBar Delegate Methods
 extension WeatherViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchWord = searchText.lowercased()
+        self.searchString = searchText.lowercased()
     }
 }

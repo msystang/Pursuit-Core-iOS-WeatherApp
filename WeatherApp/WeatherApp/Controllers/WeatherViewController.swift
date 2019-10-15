@@ -18,6 +18,13 @@ class WeatherViewController: UIViewController {
         return label
     }()
     
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.barStyle = .default
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
     lazy var weatherCollectionView: UICollectionView = {
         let collectionView = UICollectionView()
         collectionView.backgroundColor = .white
@@ -27,23 +34,16 @@ class WeatherViewController: UIViewController {
         return collectionView
     }()
     
-    lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.barStyle = .default
-        searchBar.delegate = self
-        return searchBar
-    }()
-    
     // MARK: - Private Properties
     private var weather = [Forecast]() {
         didSet {
-            weatherCollectionView.reloadData()
+            self.weatherCollectionView.reloadData()
         }
     }
     
     private var searchString: String? {
         didSet {
-            weatherCollectionView.reloadData()
+            self.weatherCollectionView.reloadData()
         }
     }
 
@@ -52,7 +52,8 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        
+        addSubviews()
+        addConstraints()
         loadData()
     }
 
@@ -87,6 +88,53 @@ class WeatherViewController: UIViewController {
         }
     }
     
+    // MARK: UI Object Constraints
+    private func addSubviews() {
+        self.view.addSubview(locationLabel)
+        self.view.addSubview(searchBar)
+        self.view.addSubview(weatherCollectionView)
+    }
+    
+    private func addConstraints() {
+        setLocationLabelConstraints()
+        setSearchBarConstraints()
+        setCollectionViewConstraints()
+    }
+    
+    private func setLocationLabelConstraints() {
+        self.locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.locationLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            self.locationLabel.heightAnchor.constraint(equalToConstant: 50),
+            self.locationLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            self.locationLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    private func setSearchBarConstraints() {
+        self.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.searchBar.topAnchor.constraint(equalTo: self.locationLabel.bottomAnchor, constant: 20),
+            self.searchBar.widthAnchor.constraint(equalToConstant: 300),
+            self.searchBar.heightAnchor.constraint(equalToConstant: 50),
+            self.searchBar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+    }
+    
+    private func setCollectionViewConstraints() {
+        self.weatherCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.weatherCollectionView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor, constant: 20),
+            self.weatherCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.weatherCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            self.weatherCollectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+        ])
+    }
+    
+
 }
 
 // MARK: - CollectionView Data Source & Delegate Methods

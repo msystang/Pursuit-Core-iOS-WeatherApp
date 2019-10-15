@@ -9,7 +9,9 @@
 import UIKit
 
 class FavoriteImagesViewController: UIViewController {
-
+    
+    // make variables for cell objects (image, date, high, low temp labels)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

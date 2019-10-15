@@ -11,6 +11,13 @@ import UIKit
 class WeatherViewController: UIViewController {
 
     // MARK: - UI Lazy Objects
+    lazy var locationLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textAlignment = .center
+        return label
+    }()
+    
     lazy var weatherCollectionView: UICollectionView = {
         let collectionView = UICollectionView()
         collectionView.backgroundColor = .white
@@ -65,6 +72,7 @@ class WeatherViewController: UIViewController {
         }
         
         let urlStr = WeatherAPIClient.getSearchResultsURLStr(from: latitude, longitude: longitude)
+        
         WeatherAPIClient.manager.getWeather(urlStr: urlStr) { (result) in
             DispatchQueue.main.async {
                 switch result {

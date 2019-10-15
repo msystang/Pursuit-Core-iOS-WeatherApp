@@ -29,7 +29,7 @@ class WeatherViewController: UIViewController {
     
     
     lazy var weatherCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -168,8 +168,8 @@ extension WeatherViewController: UICollectionViewDataSource {
         // TODO: Create func to find correct image
         cell.weatherImageView.image = UIImage(named: "clear")
         
-        cell.highTempLabel.text = String(dailyWeather.temperatureHigh)
-        cell.lowTempLabel.text = String(dailyWeather.temperatureLow)
+        cell.highTempLabel.text = "High: \(dailyWeather.temperatureHigh)"
+        cell.lowTempLabel.text = "Low: \(dailyWeather.temperatureLow)"
         
         return cell
     }
@@ -179,6 +179,10 @@ extension WeatherViewController: UICollectionViewDataSource {
 
 extension WeatherViewController: UICollectionViewDelegateFlowLayout {
     // make flow horizontal
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 300, height: 300)
+    }
 }
 
 // MARK: - TextField Delegate Methods

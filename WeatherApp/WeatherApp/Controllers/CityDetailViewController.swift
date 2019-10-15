@@ -13,6 +13,8 @@ class CityDetailViewController: UIViewController {
     lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.text = "Weather Forecast for \(locationName!) on \(selectedForecast.time.description)"
+        
         return label
     }()
     
@@ -79,6 +81,7 @@ class CityDetailViewController: UIViewController {
     }()
     
     var selectedForecast: Forecast!
+    var locationName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()

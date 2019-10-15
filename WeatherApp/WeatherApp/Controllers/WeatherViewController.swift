@@ -166,7 +166,6 @@ extension WeatherViewController: UICollectionViewDataSource {
         let date = NSDate(timeIntervalSince1970: TimeInterval(dailyWeather.time))
         cell.dateLabel.text = date.description
         
-        // TODO: Create func to find correct image
         if let image = UIImage(named: dailyWeather.icon) {
             cell.weatherImageView.image = image
         } else {
@@ -186,13 +185,14 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
     // make flow horizontal?
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 300)
+        return CGSize(width: 300, height: 250)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let detailVC = CityDetailViewController()
         detailVC.selectedForecast = weather[indexPath.row]
+        detailVC.locationName = locationName
         
         self.navigationController?.pushViewController(detailVC, animated: true)
         

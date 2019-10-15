@@ -84,8 +84,8 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             self.weatherImageView.topAnchor.constraint(equalTo: self.dateLabel.bottomAnchor, constant: 5),
-            self.weatherImageView.heightAnchor.constraint(equalToConstant: 200),
-            self.weatherImageView.widthAnchor.constraint(equalToConstant: 200),
+            self.weatherImageView.heightAnchor.constraint(equalToConstant: 100),
+            self.weatherImageView.widthAnchor.constraint(equalToConstant: 100),
             self.weatherImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
@@ -97,7 +97,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
             self.labelStackView.topAnchor.constraint(equalTo: self.weatherImageView.bottomAnchor, constant: 5),
             self.labelStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5),
             self.labelStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 5),
-            self.labelStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5)
+            self.labelStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -15)
         ])
     }
     

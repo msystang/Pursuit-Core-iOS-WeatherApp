@@ -15,6 +15,7 @@ class WeatherViewController: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
+        label.text = "Label"
         return label
     }()
     
@@ -26,10 +27,11 @@ class WeatherViewController: UIViewController {
     }()
     
     lazy var weatherCollectionView: UICollectionView = {
-        let collectionView = UICollectionView()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: "weatherCell")
         return collectionView
     }()

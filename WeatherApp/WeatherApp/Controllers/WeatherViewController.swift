@@ -184,6 +184,15 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 300, height: 300)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailVC = CityDetailViewController()
+        detailVC.selectedForecast = weather[indexPath.row]
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        
+    }
 }
 
 // MARK: - TextField Delegate Methods

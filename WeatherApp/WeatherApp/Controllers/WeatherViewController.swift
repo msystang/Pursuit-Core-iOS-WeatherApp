@@ -145,7 +145,7 @@ class WeatherViewController: UIViewController {
             self.weatherCollectionView.topAnchor.constraint(equalTo: self.textField.bottomAnchor, constant: 20),
             self.weatherCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.weatherCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
-            self.weatherCollectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+            self.weatherCollectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -162,7 +162,7 @@ extension WeatherViewController: UICollectionViewDataSource {
         let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCollectionViewCell
         let dailyWeather = weather[indexPath.row]
         
-        // TODO: Convert time to date format
+        // TODO: Convert date in model
         let date = NSDate(timeIntervalSince1970: TimeInterval(dailyWeather.time))
         cell.dateLabel.text = date.description
         
@@ -179,7 +179,7 @@ extension WeatherViewController: UICollectionViewDataSource {
 }
 
 extension WeatherViewController: UICollectionViewDelegateFlowLayout {
-    // make flow horizontal
+    // make flow horizontal?
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 300, height: 300)

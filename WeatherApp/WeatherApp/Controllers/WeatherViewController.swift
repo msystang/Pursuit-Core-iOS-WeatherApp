@@ -107,10 +107,10 @@ class WeatherViewController: UIViewController {
         self.locationLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.locationLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            self.locationLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
             self.locationLabel.heightAnchor.constraint(equalToConstant: 50),
-            self.locationLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            self.locationLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            self.locationLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.locationLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
     
@@ -118,8 +118,9 @@ class WeatherViewController: UIViewController {
         self.searchBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.searchBar.topAnchor.constraint(equalTo: self.locationLabel.bottomAnchor, constant: 20),
-            self.searchBar.widthAnchor.constraint(equalToConstant: 300),
+            self.searchBar.topAnchor.constraint(equalTo: self.locationLabel.bottomAnchor, constant: 5),
+            self.searchBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.searchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.searchBar.heightAnchor.constraint(equalToConstant: 50),
             self.searchBar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])

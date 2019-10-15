@@ -47,6 +47,36 @@ class WeatherViewController: UIViewController {
         weatherCollectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: "weatherCell")
     }
 
+    // MARK: - Private Functions
+    private func loadData() {
+        var latitude = String()
+        var longitude = String()
+        
+        ZipCodeHelper.getLatLong(fromZipCode: searchWord ?? "") { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let data):
+                    latitude = String(data.lat)
+                    longitude = String(data.long)
+                }
+            }
+        }
+        
+        let urlStr = WeatherAPIClient.getSearchResultsURLStr(from: latitude, longitude: longitude)
+        WeatherAPIClient.manager.getWeather(urlStr: urlStr) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                    case .failure(let error):
+                        print(error)
+                    case .success(let data):
+                        self.weather = data
+                }
+            }
+        }
+    }
+    
 }
 
 // MARK: - CollectionView Data Source & Delegate Methods

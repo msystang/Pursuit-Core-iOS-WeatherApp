@@ -163,7 +163,8 @@ extension WeatherViewController: UICollectionViewDataSource {
         let dailyWeather = weather[indexPath.row]
         
         // TODO: Convert time to date format
-        cell.dateLabel.text = String(dailyWeather.time)
+        let date = NSDate(timeIntervalSince1970: TimeInterval(dailyWeather.time))
+        cell.dateLabel.text = date.description
         
         // TODO: Create func to find correct image
         cell.weatherImageView.image = UIImage(named: "clear")

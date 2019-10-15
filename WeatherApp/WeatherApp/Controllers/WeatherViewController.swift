@@ -55,6 +55,7 @@ class WeatherViewController: UIViewController {
 
     private var latitude = String()
     private var longitude = String()
+    private var locationName = String()
     
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
@@ -75,7 +76,9 @@ class WeatherViewController: UIViewController {
                 case .success(let data):
                     self.latitude = String(data.lat)
                     self.longitude = String(data.long)
+                    self.locationName = String(data.location)
                     self.loadData()
+                    self.updateLocationLabel()
                 }
             }
         }
@@ -94,6 +97,10 @@ class WeatherViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func updateLocationLabel() {
+        self.locationLabel.text = "Weekly Forecast for \(locationName)"
     }
     
     // MARK: UI Object Constraints

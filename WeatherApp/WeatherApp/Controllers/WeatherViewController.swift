@@ -167,7 +167,11 @@ extension WeatherViewController: UICollectionViewDataSource {
         cell.dateLabel.text = date.description
         
         // TODO: Create func to find correct image
-        cell.weatherImageView.image = UIImage(named: "clear")
+        if let image = UIImage(named: dailyWeather.icon) {
+            cell.weatherImageView.image = image
+        } else {
+            cell.weatherImageView.image = UIImage(named: "na")
+        }
         
         cell.highTempLabel.text = "High: \(dailyWeather.temperatureHigh) °F"
         cell.lowTempLabel.text = "Low: \(dailyWeather.temperatureLow) °F"

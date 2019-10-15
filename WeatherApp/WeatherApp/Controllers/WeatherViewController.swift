@@ -60,6 +60,8 @@ class WeatherViewController: UIViewController {
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        //TODO: Figure out why title doesn't appear 
+        self.navigationController?.title = "Search"
         self.view.backgroundColor = .white
         
         addSubviews()

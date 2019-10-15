@@ -10,6 +10,8 @@ import UIKit
 
 class CityDetailViewController: UIViewController {
     
+    //TODO: Add random image using pixabay API
+    
     lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -89,6 +91,9 @@ class CityDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        
+        //TODO: Figure out why title doesn't appear
+        self.navigationController?.title = "Forecast"
         
         addSubviews()
         addConstraints()

@@ -18,23 +18,19 @@ struct Weather: Codable {
 }
 
 struct DailyWeatherResult: Codable {
-    let summary: String
-    let icon: String
     let data: [Forecast]
 }
 
 struct Forecast: Codable {
-    let time: Int
+    private let time: Int
     let summary: String
     let icon: String
     let temperatureHigh: Double
     let temperatureLow: Double
-    let sunriseTime: Int
-    let sunsetTime: Int
+    private let sunriseTime: Int
+    private let sunsetTime: Int
     let windSpeed: Double
     let precipProbability: Double
-    
-    //TODO: Convert UNIX time to formatted time and date
     
     var formattedDate: String {
         let timeInterval = Date(timeIntervalSince1970: TimeInterval(time))

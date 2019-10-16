@@ -172,9 +172,8 @@ extension WeatherViewController: UICollectionViewDataSource {
         let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCollectionViewCell
         let dailyWeather = weather[indexPath.row]
         
-        // TODO: Convert date in model & format
-        let date = NSDate(timeIntervalSince1970: TimeInterval(dailyWeather.time))
-        cell.dateLabel.text = date.description
+        let date = dailyWeather.formattedDate
+        cell.dateLabel.text = date
         
         if let image = UIImage(named: dailyWeather.icon) {
             cell.weatherImageView.image = image

@@ -18,7 +18,7 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         //TODO: Convert time
-        label.text = "Weather Forecast for \(locationName!) on \(selectedForecast.time.description)"
+        label.text = "Weather Forecast for \(locationName!) on \(selectedForecast.formattedDate)"
         
         return label
     }()

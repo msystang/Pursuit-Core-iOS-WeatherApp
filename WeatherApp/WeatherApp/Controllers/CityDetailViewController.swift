@@ -11,7 +11,9 @@ import UIKit
 class CityDetailViewController: UIViewController {
     
     //TODO: Add random image using pixabay API
+    //TODO: Add savebutton in navigation bar
     
+    // MARK: - UI Lazy Objects
     lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -85,9 +87,16 @@ class CityDetailViewController: UIViewController {
         return stackView
     }()
     
+//    lazy var saveFavoriteButton: UIBarButtonItem = {
+//        let barButton = UIBarButtonItem(barButtonSystemItem: UIButton, target: self, action: <#T##Selector?#>)
+//    }()
+    
+    // MARK: - Private Properties
+    
     var selectedForecast: Forecast!
     var locationName: String!
     
+    // MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -99,6 +108,7 @@ class CityDetailViewController: UIViewController {
         addConstraints()
     }
     
+    // MARK: UI Object Constraints
     private func addSubviews() {
         view.addSubview(locationLabel)
         view.addSubview(locationImageView)

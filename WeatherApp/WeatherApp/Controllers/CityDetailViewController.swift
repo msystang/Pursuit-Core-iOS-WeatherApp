@@ -82,6 +82,7 @@ class CityDetailViewController: UIViewController {
     lazy var precipChanceLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        //TODO: Set places after decimal point
         label.text = "Chance of Precipitation: \(selectedForecast.precipProbability*100)%"
         return label
     }()
@@ -94,9 +95,13 @@ class CityDetailViewController: UIViewController {
         return stackView
     }()
     
-//    lazy var saveFavoriteButton: UIBarButtonItem = {
-//        let barButton = UIBarButtonItem(barButtonSystemItem: UIButton, target: self, action: <#T##Selector?#>)
-//    }()
+    lazy var saveFavoriteButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem()
+        barButton.title = "Save"
+        return barButton
+    }()
+
+    
     
     // MARK: - Private Properties
     
@@ -105,11 +110,12 @@ class CityDetailViewController: UIViewController {
     
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
+    
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        //TODO: Figure out why title doesn't appear
-        self.navigationController?.title = "Forecast"
+        self.navigationItem.rightBarButtonItem = saveFavoriteButton
+        self.navigationItem.title = "Forecast"
         
         addSubviews()
         addConstraints()

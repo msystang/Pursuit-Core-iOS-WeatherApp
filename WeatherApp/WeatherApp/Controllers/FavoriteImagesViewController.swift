@@ -18,7 +18,11 @@ class FavoriteImagesViewController: UIViewController {
         return tableView
     }()
     
-    var favorites = [Image]()
+    var favorites = [Image]() {
+        didSet {
+            favoritesTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +65,7 @@ class FavoriteImagesViewController: UIViewController {
 
 extension FavoriteImagesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 300
     }
 }
 

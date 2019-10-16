@@ -113,27 +113,43 @@ class CityDetailViewController: UIViewController {
         
         addSubviews()
         addConstraints()
-        loadImage()
+        loadImageData()
     }
     
     // MARK: - Private Functions
-    
-    //TODO: Test image model!!!
-    private func loadImage() {
+
+    private func loadImageData() {
         let urlStr = ImageAPIClient.getSearchResultsURLStr(from: locationName)
+        
+        ImageAPIClient.manager.getImage(urlStr: urlStr) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                    case .failure(let error):
+                        print(error)
+                        //TODO: - Add alert
+                    case .success(let imageDataFromURL):
+                        let randomImage = Image.getRandomImage(images: imageDataFromURL)
+                        self.convertImageFromData(randomImage: randomImage)
+                }
+            }
+        }
+    }
+    
+    private func convertImageFromData(randomImage: Image) {
+        let urlStr = randomImage.url
         
         ImageHelper.manager.getImage(urlStr: urlStr) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .failure(let error):
+                    case .failure(let error):
                     print(error)
-                    print(urlStr)
-                    //Add default image
-                case .success(let imageFromURL):
-                    self.locationImageView.image = imageFromURL
+                    //TODO: - Add alert
+                    case .success(let imageFromURL):
+                        self.locationImageView.image = imageFromURL
                 }
             }
         }
+        
     }
     
     // MARK: - UI Object Constraints

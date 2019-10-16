@@ -24,6 +24,7 @@ class WeatherViewController: UIViewController {
         textField.delegate = self
         textField.backgroundColor = .lightGray
         textField.textAlignment = .center
+        textField.borderStyle = .roundedRect
         return textField
     }()
     

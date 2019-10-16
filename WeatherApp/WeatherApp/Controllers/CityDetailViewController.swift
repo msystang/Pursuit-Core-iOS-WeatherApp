@@ -18,7 +18,10 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = "Weather Forecast for \(locationName!) on \(selectedForecast.formattedDate)"
+        label.text = """
+                        Weather Forecast for \(locationName!)
+                        on \(selectedForecast.formattedDate)
+                        """
         
         return label
     }()

@@ -34,6 +34,8 @@
 		EA0EF6C6235524DA00A1D6D0 /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = EA0EF6842351313200A1D6D0 /* weather.json */; };
 		EA0EF6CA235793EA00A1D6D0 /* images.json in Resources */ = {isa = PBXBuildFile; fileRef = EA0EF6C9235793EA00A1D6D0 /* images.json */; };
 		EA0EF6CC2357957200A1D6D0 /* images.json in Resources */ = {isa = PBXBuildFile; fileRef = EA0EF6C9235793EA00A1D6D0 /* images.json */; };
+		EA0EF6CE2357A8B600A1D6D0 /* ImagePersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF6612351292400A1D6D0 /* ImagePersistenceHelper.swift */; };
+		EA0EF6CF2357A9DE00A1D6D0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF65F235128C700A1D6D0 /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -337,8 +339,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0EF67623512B2700A1D6D0 /* Weather.swift in Sources */,
+				EA0EF6CF2357A9DE00A1D6D0 /* PersistenceManager.swift in Sources */,
 				EA0EF67723512B2A00A1D6D0 /* Image.swift in Sources */,
 				EA0EF66E23512AF700A1D6D0 /* WeatherAppTests.swift in Sources */,
+				EA0EF6CE2357A8B600A1D6D0 /* ImagePersistenceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

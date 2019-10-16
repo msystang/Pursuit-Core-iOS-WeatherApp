@@ -23,6 +23,12 @@ class PersistenceManager<T: Codable> {
         try serializedData.write(to: url, options: Data.WritingOptions.atomic)
     }
     
+    func delete(elementWith urlStr: String) throws {
+        var elements = try getObjects()
+        elements.remove(at: 0)
+        let serializedData = try PropertyListEncoder().encode(elements)
+        try serializedData.write(to: url, options: Data.WritingOptions.atomic)
+    }
     
     init(fileName: String) {
         self.fileName = fileName

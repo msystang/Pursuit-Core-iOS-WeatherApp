@@ -18,6 +18,10 @@ class ImagePersistenceHelper {
     func get() throws -> [Image] {
         return try persistenceHelper.getObjects()
     }
+
+    func deleteImage(with urlStr: String) throws {
+        try persistenceHelper.delete(elementWith: urlStr)
+    }
     
     private let persistenceHelper = PersistenceManager<Image>(fileName: "favoriteImages.plist")
     

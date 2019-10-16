@@ -78,5 +78,47 @@ class WeatherAppTests: XCTestCase {
         // Assert
         XCTAssertTrue(images.count == 20, "Was expecting 8 elements, but found \(images.count)")
     }
+    
+    
+    private var testImages = [Image]()
+    private let imageOne = Image(url: "testUrlOne")
+    private let imageTwo = Image(url: "testUrlTwo")
+        
+    private func saveImagePersistence() {
+        do {
+            try ImagePersistenceHelper.manager.save(newImage: imageOne)
+            try ImagePersistenceHelper.manager.save(newImage: imageTwo)
+        } catch {
+            print(error)
+        }
+    }
+
+    func testLoadImagePersistence() {
+//        saveImagePersistence()
+        
+        do {
+            testImages = try ImagePersistenceHelper.manager.get()
+            print(testImages.count)
+        } catch {
+            print(error)
+            XCTFail()
+        }
+        
+        XCTAssertTrue(testImages[0].url == imageOne.url, "Expected URL: \(imageOne.url), got \(testImages[0].url)")
+        XCTAssertTrue(testImages[1].url == imageTwo.url, "Expected URL: \(imageTwo.url), got \(testImages[1].url)")
+         
+        }
+
+    func testDeletePersistedObject() {
+        do {
+            try ImagePersistenceHelper.manager.deleteImage(with: imageOne.url)
+            try ImagePersistenceHelper.manager.deleteImage(with: imageTwo.url)
+        } catch {
+            print(error)
+        }
+        
+        XCTAssertTrue(testImages.count == 0, "Expected: 0, Got: \(testImages.count)")
+    }
+    
 
 }

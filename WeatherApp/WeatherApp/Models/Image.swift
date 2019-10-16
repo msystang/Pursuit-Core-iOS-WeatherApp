@@ -19,9 +19,6 @@ struct ImageWrapper: Codable {
 
 struct Image: Codable {
     let url: String
-//    var imageData: Data {
-//
-//    }
     
     private enum CodingKeys: String, CodingKey {
         case url = "largeImageURL"
@@ -33,6 +30,20 @@ struct Image: Codable {
             fatalError("No random image")
         }
         return randomImage
+    }
+    
+    func existsInFavorites() -> Bool? {
+        do {
+            let allSavedImages = try ImagePersistenceHelper.manager.get()
+            if allSavedImages.contains(where: { $0.url == self.url }) {
+                return true
+            } else {
+                return false
+            }
+        } catch {
+            print(error)
+            return nil
+        }
     }
     
 }

@@ -27,10 +27,13 @@ class FavoriteImagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        loadFavorites()
+    
         addSubviews()
         addConstraints()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadFavorites()
     }
     
     private func loadFavorites() {

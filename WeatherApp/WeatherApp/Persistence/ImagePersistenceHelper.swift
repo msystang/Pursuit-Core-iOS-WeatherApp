@@ -16,7 +16,7 @@ class ImagePersistenceHelper {
     }
     
     func get() throws -> [Image] {
-        return try persistenceHelper.getObjects()
+        return try persistenceHelper.getObjects().reversed()
     }
 
     func deleteImage(with urlStr: String) throws {

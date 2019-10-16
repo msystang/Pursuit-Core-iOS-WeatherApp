@@ -103,7 +103,7 @@ class WeatherViewController: UIViewController {
     }
     
     private func showErrorAlert(error: Error) {
-        let alertVC = UIAlertController(title: "Error", message: "Could not load weather data: \(error)", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Error", message: "Could not load weather data: \(error). Check your internet connection or entry.", preferredStyle: .alert)
                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                    present(alertVC, animated: true, completion: nil)
     }

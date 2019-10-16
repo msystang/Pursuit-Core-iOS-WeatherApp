@@ -15,7 +15,7 @@ class WeatherViewController: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
-        label.text = "Enter ZipCode"
+        label.text = "Enter ZipCode or City"
         return label
     }()
     

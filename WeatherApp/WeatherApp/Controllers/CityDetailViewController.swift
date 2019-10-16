@@ -81,7 +81,7 @@ class CityDetailViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [highTempLabel, lowTempLabel, sunriseLabel, sunsetLabel, windSpeedLabel, precipChanceLabel])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.alignment = .center
+        stackView.alignment = .leading
         return stackView
     }()
     

@@ -33,6 +33,7 @@ struct Forecast: Codable {
     let sunsetTime: Int
     let windSpeed: Double
     let precipProbability: Double
+    
 }
 
 //TODO: Convert UNIX time

@@ -36,25 +36,34 @@ struct Forecast: Codable {
     
     //TODO: Convert UNIX time to formatted time and date
     
-    var timeAsTimeInterval: Date {
-        let timeInterval = Date(timeIntervalSince1970: TimeInterval(time))
-        return timeInterval
-    }
-    
     var formattedDate: String {
+        let timeInterval = Date(timeIntervalSince1970: TimeInterval(time))
+        
         let oldDateFormat = DateFormatter()
         oldDateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         let newDateFormat = DateFormatter()
         newDateFormat.dateFormat = "EEEE, MMM d, yyyy"
-        return newDateFormat.string(from: timeAsTimeInterval)
+        return newDateFormat.string(from: timeInterval)
     }
     
-    var formattedTime: String {
+    var formattedSunriseTime: String {
+        let timeInterval = Date(timeIntervalSince1970: TimeInterval(sunriseTime))
+        
         let oldDateFormat = DateFormatter()
         oldDateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         let newDateFormat = DateFormatter()
         newDateFormat.dateFormat = "h:mm a"
-        return newDateFormat.string(from: timeAsTimeInterval)
+        return newDateFormat.string(from: timeInterval)
+    }
+    
+    var formattedSunsetTime: String {
+        let timeInterval = Date(timeIntervalSince1970: TimeInterval(sunsetTime))
+        
+        let oldDateFormat = DateFormatter()
+        oldDateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        let newDateFormat = DateFormatter()
+        newDateFormat.dateFormat = "h:mm a"
+        return newDateFormat.string(from: timeInterval)
     }
     
 }

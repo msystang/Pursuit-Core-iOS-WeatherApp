@@ -56,7 +56,7 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         //TODO: Convert time
-        label.text = "Sunrise: \(selectedForecast.sunriseTime)"
+        label.text = "Sunrise: \(selectedForecast.formattedSunriseTime)"
         label.numberOfLines = 0
         return label
     }()
@@ -65,7 +65,7 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         //TODO: Convert time
-        label.text = "Sunset: \(selectedForecast.sunsetTime)"
+        label.text = "Sunset: \(selectedForecast.formattedSunsetTime)"
         label.numberOfLines = 0
         return label
     }()

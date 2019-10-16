@@ -60,7 +60,9 @@ class FavoriteImagesViewController: UIViewController {
 
 
 extension FavoriteImagesViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
+    }
 }
 
 extension FavoriteImagesViewController: UITableViewDataSource {

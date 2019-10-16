@@ -12,6 +12,7 @@ class FavoriteImagesTableViewCell: UITableViewCell {
     
     lazy var favoriteImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -49,7 +50,7 @@ class FavoriteImagesTableViewCell: UITableViewCell {
             favoriteImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             favoriteImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             favoriteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            favoriteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+            favoriteImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
     

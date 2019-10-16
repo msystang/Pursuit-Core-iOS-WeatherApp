@@ -18,6 +18,7 @@ class WeatherAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    
     func testGetWeatherDataFromJSON() {
         // Arrange
         guard let jsonPath = Bundle.main.path(forResource: "weather", ofType: "json") else {
@@ -48,5 +49,34 @@ class WeatherAppTests: XCTestCase {
     }
     
     
-    //TODO: Test image model!!! 
+    //TODO: Test image model!!!
+    func testGetImageDataFromJSON() {
+        // Arrange
+        guard let jsonPath = Bundle.main.path(forResource: "images", ofType: "json") else {
+            fatalError("JSON file not found")
+        }
+        
+        var jsonData = Data()
+        
+        do {
+            jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonPath))
+        } catch {
+            print(error)
+        }
+        
+        // Act
+        var images = [Image]()
+            
+        do {
+            let imageInfo = try ImageWrapper.decodeImagesFromData(from: jsonData)
+            images = imageInfo
+        }
+        catch {
+            print(error)
+        }
+            
+        // Assert
+        XCTAssertTrue(images.count == 20, "Was expecting 8 elements, but found \(images.count)")
+    }
+
 }

@@ -8,9 +8,19 @@
 
 import Foundation
 
+struct ImageWrapper: Codable {
+    let hits: [Image]
+    
+    static func decodeImagesFromData(from jsonData: Data) throws -> [Image] {
+        let response = try JSONDecoder().decode(ImageWrapper.self, from: jsonData)
+        return response.hits
+    }
+}
+
 struct Image: Codable {
-    static func decodeImageFromData(from jsonData: Data) throws -> [Image] {
-         let response = try JSONDecoder().decode([Image].self, from: jsonData)
-         return response
-     }
+    let url: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case url = "largeImageURL"
+    }
 }

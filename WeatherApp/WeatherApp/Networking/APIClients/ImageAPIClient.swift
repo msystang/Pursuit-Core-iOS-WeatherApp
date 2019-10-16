@@ -33,7 +33,7 @@ class ImageAPIClient {
                 completionHandler(.failure(error))
             case .success(let data):
                 do {
-                    let imageInfo = try Image.decodeImageFromData(from: data)
+                    let imageInfo = try ImageWrapper.decodeImagesFromData(from: data)
                     completionHandler(.success(imageInfo))
                 }
                 catch {

@@ -49,7 +49,6 @@ class WeatherViewController: UIViewController {
     private var searchString: String? {
         didSet {
             loadLatLongFromZip()
-            loadData()
             self.weatherCollectionView.reloadData()
         }
     }

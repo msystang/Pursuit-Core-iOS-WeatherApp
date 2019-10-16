@@ -10,6 +10,11 @@ import UIKit
 
 class FavoriteImagesViewController: UIViewController {
     
+    lazy var favoritesTableView: UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
     var favorites = [Image]()
     
     override func viewDidLoad() {
@@ -17,6 +22,8 @@ class FavoriteImagesViewController: UIViewController {
         view.backgroundColor = .white
         
         loadFavorites()
+        addSubviews()
+        addConstraints()
     }
     
     private func loadFavorites() {
@@ -28,4 +35,22 @@ class FavoriteImagesViewController: UIViewController {
         
     }
     
+    private func addSubviews() {
+        view.addSubview(favoritesTableView)
+    }
+    
+    private func addConstraints() {
+        setTableViewConstraints()
+    }
+    
+    private func setTableViewConstraints() {
+        favoritesTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            favoritesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            favoritesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            favoritesTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            favoritesTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+    }
 }

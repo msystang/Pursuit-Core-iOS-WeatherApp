@@ -121,7 +121,7 @@ class WeatherViewController: UIViewController {
         self.locationLabel.text = "Weekly Forecast for \(locationName)"
     }
     
-    // MARK: UI Object Constraints
+    // MARK: - UI Object Constraints
     private func addSubviews() {
         self.view.addSubview(locationLabel)
         self.view.addSubview(textField)

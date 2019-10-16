@@ -47,4 +47,6 @@ class WeatherAppTests: XCTestCase {
         XCTAssertTrue(forecast.count == 8, "Was expecting 8 elements, but found \(forecast.count)")
     }
     
+    
+    //TODO: Test image model!!! 
 }

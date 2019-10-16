@@ -93,12 +93,19 @@ class WeatherViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                     case .failure(let error):
+                        self.showErrorAlert(error: error)
                         print(error)
                     case .success(let data):
                         self.weather = data
                 }
             }
         }
+    }
+    
+    private func showErrorAlert(error: Error) {
+        let alertVC = UIAlertController(title: "Error", message: "Could not load weather data: \(error)", preferredStyle: .alert)
+                   alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                   present(alertVC, animated: true, completion: nil)
     }
     
     private func updateLocationLabel() {

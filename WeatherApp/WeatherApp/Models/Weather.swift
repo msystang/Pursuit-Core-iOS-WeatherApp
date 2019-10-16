@@ -34,6 +34,20 @@ struct Forecast: Codable {
     let windSpeed: Double
     let precipProbability: Double
     
+    //TODO: Convert UNIX time to formatted time and date
+    
+    var convertedDate: NSDate {
+        let date = NSDate(timeIntervalSince1970: TimeInterval(time))
+        return date
+        
+//        let dateFormatter = DateFormatter()
+    }
+    
+    var convertedTime: NSDate {
+          let date = NSDate(timeIntervalSince1970: TimeInterval(time))
+          return date
+      }
+    
 }
 
-//TODO: Convert UNIX time
+

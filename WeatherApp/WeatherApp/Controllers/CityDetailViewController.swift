@@ -17,7 +17,7 @@ class CityDetailViewController: UIViewController {
     lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        //TODO: Convert time
+        label.numberOfLines = 0
         label.text = "Weather Forecast for \(locationName!) on \(selectedForecast.formattedDate)"
         
         return label
@@ -32,6 +32,7 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = selectedForecast.summary
+        label.numberOfLines = 0
         return label
     }()
     
@@ -39,6 +40,7 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "High: \(selectedForecast.temperatureHigh) °F"
+        label.numberOfLines = 0
         return label
     }()
     
@@ -46,6 +48,7 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "Low: \(selectedForecast.temperatureLow) °F"
+        label.numberOfLines = 0
         return label
     }()
     
@@ -54,6 +57,7 @@ class CityDetailViewController: UIViewController {
         label.textAlignment = .center
         //TODO: Convert time
         label.text = "Sunrise: \(selectedForecast.sunriseTime)"
+        label.numberOfLines = 0
         return label
     }()
     
@@ -62,6 +66,7 @@ class CityDetailViewController: UIViewController {
         label.textAlignment = .center
         //TODO: Convert time
         label.text = "Sunset: \(selectedForecast.sunsetTime)"
+        label.numberOfLines = 0
         return label
     }()
     
@@ -69,6 +74,7 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "Wind Speed: \(selectedForecast.windSpeed) mph"
+        label.numberOfLines = 0
         return label
     }()
     

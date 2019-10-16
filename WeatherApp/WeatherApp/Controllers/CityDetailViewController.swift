@@ -105,6 +105,13 @@ class CityDetailViewController: UIViewController {
     var locationName: String!
     var currentImage: Image!
     
+    // MARK: - Private Enums
+    
+    private enum Saved {
+        case yes
+        case no
+    }
+    
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
     
@@ -156,15 +163,37 @@ class CityDetailViewController: UIViewController {
         
     }
     
+    private func showAlert(ifSaved: Saved) {
+        switch ifSaved {
+            case .yes:
+                let alert = UIAlertController(title: "Hey!", message: "This image is already saved in your favorites.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+            case .no:
+                let alert = UIAlertController(title: "Success!", message: "This image is now saved to your favorites.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - UI Objc Functions
     
     @objc func saveFavoriteImage(sender: UIBarButtonItem) {
-        do {
-            try ImagePersistenceHelper.manager.save(newImage: currentImage)
-            print("saved image")
-        } catch {
-            print(error)
-        }
+        if let existsInFavorites = currentImage.existsInFavorites() {
+                   switch existsInFavorites {
+                       case false:
+                           do {
+                               try ImagePersistenceHelper.manager.save(newImage: currentImage)
+                               print("saved image")
+                               showAlert(ifSaved: .no)
+                           } catch {
+                               print(error)
+                           }
+                       case true:
+                           showAlert(ifSaved: .yes)
+                   }
+               }
+
     }
     
     // MARK: - UI Object Constraints

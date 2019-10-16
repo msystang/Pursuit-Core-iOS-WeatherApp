@@ -148,7 +148,6 @@
 		EA0EF6522351240900A1D6D0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				548CE065234D33E600B5177D /* ZipCodeHelper.swift */,
 				EA0EF66523512A3700A1D6D0 /* Weather.swift */,
 				EA0EF6632351296800A1D6D0 /* Image.swift */,
 			);
@@ -189,6 +188,7 @@
 				EA0EF67923512BDE00A1D6D0 /* NetworkManager.swift */,
 				EA0EF67D23512C8100A1D6D0 /* ImageHelper.swift */,
 				EA0EF67B23512C2400A1D6D0 /* AppError.swift */,
+				548CE065234D33E600B5177D /* ZipCodeHelper.swift */,
 				EA0EF67F23512C9500A1D6D0 /* APIClients */,
 			);
 			path = Networking;

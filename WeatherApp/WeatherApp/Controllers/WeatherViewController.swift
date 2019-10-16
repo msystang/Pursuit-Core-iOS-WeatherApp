@@ -79,6 +79,7 @@ class WeatherViewController: UIViewController {
                     self.latitude = String(data.lat)
                     self.longitude = String(data.long)
                     self.locationName = String(data.location)
+                    
                     self.loadData()
                     self.updateLocationLabel()
                 }

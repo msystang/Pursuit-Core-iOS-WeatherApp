@@ -10,9 +10,6 @@ import UIKit
 
 class CityDetailViewController: UIViewController {
     
-    //TODO: Add random image using pixabay API
-    //TODO: Add savebutton in navigation bar
-    
     // MARK: - UI Lazy Objects
     lazy var locationLabel: UILabel = {
         let label = UILabel()
@@ -96,8 +93,7 @@ class CityDetailViewController: UIViewController {
     }()
     
     lazy var saveFavoriteButton: UIBarButtonItem = {
-        let barButton = UIBarButtonItem()
-        barButton.title = "Save"
+        let barButton = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain , target: self, action: #selector(saveFavoriteImage))
         return barButton
     }()
 
@@ -107,6 +103,7 @@ class CityDetailViewController: UIViewController {
     
     var selectedForecast: Forecast!
     var locationName: String!
+    var currentImage: Image!
     
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
@@ -136,6 +133,7 @@ class CityDetailViewController: UIViewController {
                     case .success(let imageDataFromURL):
                         let randomImage = Image.getRandomImage(images: imageDataFromURL)
                         self.convertImageFromData(randomImage: randomImage)
+                        self.currentImage = randomImage
                 }
             }
         }
@@ -156,6 +154,17 @@ class CityDetailViewController: UIViewController {
             }
         }
         
+    }
+    
+    // MARK: - UI Objc Functions
+    
+    @objc func saveFavoriteImage(sender: UIBarButtonItem) {
+        do {
+            try ImagePersistenceHelper.manager.save(newImage: currentImage)
+            print("saved image")
+        } catch {
+            print(error)
+        }
     }
     
     // MARK: - UI Object Constraints

@@ -75,6 +75,7 @@ class WeatherViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
+                    self.showLocationErrorAlert()
                     print(error)
                 case .success(let data):
                     self.latitude = String(data.lat)
@@ -95,7 +96,7 @@ class WeatherViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                     case .failure(let error):
-                        self.showErrorAlert(error: error)
+                        self.showDataErrorAlert(error: error)
                         print(error)
                     case .success(let data):
                         self.weather = data
@@ -104,8 +105,14 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    private func showErrorAlert(error: Error) {
-        let alertVC = UIAlertController(title: "Error", message: "Could not load weather data: \(error). Check your internet connection or entry.", preferredStyle: .alert)
+    private func showLocationErrorAlert() {
+           let alertVC = UIAlertController(title: "Error", message: "Could not find location. Check your input.", preferredStyle: .alert)
+                      alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                      present(alertVC, animated: true, completion: nil)
+       }
+    
+    private func showDataErrorAlert(error: Error) {
+        let alertVC = UIAlertController(title: "Error", message: "Could not load weather data: \(error). Check your internet connection.", preferredStyle: .alert)
                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                    present(alertVC, animated: true, completion: nil)
     }

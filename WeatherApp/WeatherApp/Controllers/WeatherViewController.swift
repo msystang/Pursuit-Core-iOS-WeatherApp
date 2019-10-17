@@ -213,10 +213,10 @@ extension WeatherViewController: UICollectionViewDataSource {
         cell.lowTempLabel.text = "Low: \(dailyWeather.temperatureLow) °F"
         
         cell.backgroundColor = .white
+    
         
         return cell
     }
-    
     
 }
 

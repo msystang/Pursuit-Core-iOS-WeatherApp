@@ -43,7 +43,8 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
+        configureCellAppearance()
         addSubviews()
         addConstraints()
     }
@@ -57,6 +58,20 @@ class WeatherCollectionViewCell: UICollectionViewCell {
          super.prepareForReuse()
     }
 
+    private func configureCellAppearance() {
+        self.layer.cornerRadius = 10.0
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.masksToBounds = true
+
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        self.layer.shadowRadius = 2.0
+        self.layer.shadowOpacity = 0.5
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+    }
+    
     // MARK: - UI Constraint Methods
     private func addSubviews() {
         self.contentView.addSubview(dateLabel)

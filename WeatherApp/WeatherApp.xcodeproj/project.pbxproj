@@ -36,6 +36,7 @@
 		EA0EF6CC2357957200A1D6D0 /* images.json in Resources */ = {isa = PBXBuildFile; fileRef = EA0EF6C9235793EA00A1D6D0 /* images.json */; };
 		EA0EF6CE2357A8B600A1D6D0 /* ImagePersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF6612351292400A1D6D0 /* ImagePersistenceHelper.swift */; };
 		EA0EF6CF2357A9DE00A1D6D0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF65F235128C700A1D6D0 /* PersistenceManager.swift */; };
+		EA0EF6F32358E8B300A1D6D0 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EF6F22358E8B300A1D6D0 /* UserDefaultsWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		EA0EF68223512CAE00A1D6D0 /* ImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIClient.swift; sourceTree = "<group>"; };
 		EA0EF6842351313200A1D6D0 /* weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = weather.json; sourceTree = "<group>"; };
 		EA0EF6C9235793EA00A1D6D0 /* images.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = images.json; sourceTree = "<group>"; };
+		EA0EF6F22358E8B300A1D6D0 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				EA0EF65F235128C700A1D6D0 /* PersistenceManager.swift */,
 				EA0EF6612351292400A1D6D0 /* ImagePersistenceHelper.swift */,
+				EA0EF6F22358E8B300A1D6D0 /* UserDefaultsWrapper.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				EA0EF6642351296800A1D6D0 /* Image.swift in Sources */,
 				EA0EF67C23512C2400A1D6D0 /* AppError.swift in Sources */,
 				EA0EF65A2351284400A1D6D0 /* WeatherCollectionViewCell.swift in Sources */,
+				EA0EF6F32358E8B300A1D6D0 /* UserDefaultsWrapper.swift in Sources */,
 				EA0EF654235124C300A1D6D0 /* Secrets.swift in Sources */,
 				EA0EF660235128C700A1D6D0 /* PersistenceManager.swift in Sources */,
 				EA0EF6622351292400A1D6D0 /* ImagePersistenceHelper.swift in Sources */,

@@ -50,6 +50,10 @@ class WeatherViewController: UIViewController {
         didSet {
             loadLatLongFromZip()
             self.weatherCollectionView.reloadData()
+            
+            if let searchString = searchString {
+                UserDefaultsWrapper.manager.store(searchString: searchString)
+            }
         }
     }
 
@@ -65,11 +69,22 @@ class WeatherViewController: UIViewController {
         addSubviews()
         addConstraints()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setInitialValuesFromUserDefaults()
+    }
 
     // MARK: - Private Functions
     private func setUpViewController() {
         self.navigationItem.title = "Search"
         self.view.backgroundColor = .white
+    }
+    
+    private func setInitialValuesFromUserDefaults() {
+        if let savedSearchString = UserDefaultsWrapper.manager.getSearchString() {
+            searchString = savedSearchString
+        }
+        
     }
     
     private func loadLatLongFromZip() {

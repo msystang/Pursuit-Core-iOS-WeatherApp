@@ -182,6 +182,12 @@ class CityDetailViewController: UIViewController {
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
+    
+    private func showImageSaveErrorAlert(error: Error) {
+        let alertVC = UIAlertController(title: "Error", message: "Could not save image: \(error).", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
         
     // MARK: - UI Objc Functions
     @objc func saveFavoriteImage(sender: UIBarButtonItem) {
@@ -193,7 +199,7 @@ class CityDetailViewController: UIViewController {
                         showSavedAlert(ifSaved: .no)
                     } catch {
                         print(error)
-                        //Add alert -- cannot save
+                        showImageSaveErrorAlert(error: error)
                     }
                 case true:
                     showSavedAlert(ifSaved: .yes)

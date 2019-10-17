@@ -169,9 +169,10 @@ class WeatherViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             self.textField.topAnchor.constraint(equalTo: self.locationLabel.bottomAnchor, constant: 5),
-            self.textField.widthAnchor.constraint(equalToConstant: 100),
+            self.textField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.textField.heightAnchor.constraint(equalToConstant: 30),
-            self.textField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.textField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50)
+
         ])
     }
     

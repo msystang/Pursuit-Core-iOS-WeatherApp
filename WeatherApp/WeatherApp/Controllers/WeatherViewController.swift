@@ -67,7 +67,6 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: - Private Functions
-    
     private func setUpViewController() {
         self.navigationItem.title = "Search"
         self.view.backgroundColor = .white
@@ -75,7 +74,7 @@ class WeatherViewController: UIViewController {
     
     //TODO: Rename loadLocationFromSearch and rename fromZipCode param in helper
     private func loadLatLongFromZip() {
-        ZipCodeHelper.getLatLong(fromZipCode: searchString ?? "") { (result) in
+        ZipCodeHelper.getLatLong(fromZipCodeOrCity: searchString ?? "") { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):

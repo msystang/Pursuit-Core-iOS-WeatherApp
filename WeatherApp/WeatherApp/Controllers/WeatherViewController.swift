@@ -241,6 +241,7 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
 extension WeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.searchString = textField.text
+        textField.resignFirstResponder()
         return true
     }
 }

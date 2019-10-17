@@ -13,6 +13,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Lazy Objects
     lazy var dateLabel: UILabel = {
         let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 16)
         label.textAlignment = .center
         return label
     }()

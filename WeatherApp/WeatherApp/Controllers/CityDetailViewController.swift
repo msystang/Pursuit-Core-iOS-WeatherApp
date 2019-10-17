@@ -15,6 +15,7 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.font = .boldSystemFont(ofSize: 18)
         label.text = """
                         Weather Forecast for \(locationName!)
                         on \(selectedForecast.formattedDate)
@@ -32,6 +33,7 @@ class CityDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = selectedForecast.summary
+        label.font = .boldSystemFont(ofSize: 16)
         label.numberOfLines = 0
         return label
     }()
@@ -123,7 +125,7 @@ class CityDetailViewController: UIViewController {
     
     // MARK: - Private Functions
     private func setUpViewController() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = #colorLiteral(red: 1, green: 0.9586635232, blue: 0.6891726851, alpha: 1)
         self.navigationItem.rightBarButtonItem = saveFavoriteButton
         self.navigationItem.title = "Forecast"
     }

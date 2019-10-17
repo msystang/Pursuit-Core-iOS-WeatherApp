@@ -115,7 +115,9 @@ class CityDetailViewController: UIViewController {
         setUpViewController()
         addSubviews()
         addConstraints()
-        //Add to view will appear
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         loadImageData()
     }
     

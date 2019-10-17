@@ -72,7 +72,6 @@ class WeatherViewController: UIViewController {
         self.view.backgroundColor = .white
     }
     
-    //TODO: Rename loadLocationFromSearch and rename fromZipCode param in helper
     private func loadLatLongFromZip() {
         ZipCodeHelper.getLatLong(fromZipCodeOrCity: searchString ?? "") { (result) in
             DispatchQueue.main.async {
@@ -202,7 +201,6 @@ extension WeatherViewController: UICollectionViewDataSource {
 }
 
 extension WeatherViewController: UICollectionViewDelegateFlowLayout {
-    // make flow horizontal?
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 300, height: 250)

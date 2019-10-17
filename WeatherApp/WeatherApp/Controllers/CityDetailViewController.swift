@@ -138,9 +138,10 @@ class CityDetailViewController: UIViewController {
                         print(error)
                         self.showImageErrorAlert(error: error)
                     case .success(let imageDataFromURL):
-                        let randomImage = Image.getRandomImage(images: imageDataFromURL)
-                        self.convertImageFromData(randomImage: randomImage)
-                        self.currentImage = randomImage
+                        if let randomImage = Image.getRandomImage(images: imageDataFromURL) {
+                                self.convertImageFromData(randomImage: randomImage)
+                                self.currentImage = randomImage
+                        }
                 }
             }
         }

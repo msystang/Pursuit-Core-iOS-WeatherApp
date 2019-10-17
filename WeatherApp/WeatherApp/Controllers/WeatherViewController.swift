@@ -60,16 +60,18 @@ class WeatherViewController: UIViewController {
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //TODO: Add these in private func to set up VC
-        self.navigationItem.title = "Search"
-        self.view.backgroundColor = .white
-        
+    
+        setUpViewController()
         addSubviews()
         addConstraints()
     }
 
     // MARK: - Private Functions
+    
+    private func setUpViewController() {
+        self.navigationItem.title = "Search"
+        self.view.backgroundColor = .white
+    }
     
     //TODO: Rename loadLocationFromSearch and rename fromZipCode param in helper
     private func loadLatLongFromZip() {

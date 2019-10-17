@@ -29,8 +29,8 @@ class FavoriteImagesViewController: UIViewController {
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-    
+        
+        setUpViewController()
         addSubviews()
         addConstraints()
     }
@@ -40,6 +40,10 @@ class FavoriteImagesViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    private func setUpViewController() {
+        view.backgroundColor = .white
+    }
+    
     private func loadFavorites() {
         do {
             favorites = try ImagePersistenceHelper.manager.get()

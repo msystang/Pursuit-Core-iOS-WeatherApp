@@ -20,9 +20,9 @@ struct ImageWrapper: Codable {
 struct Image: Codable {
     let url: String
     
-    static func getRandomImage(images: [Image]) -> Image {
+    static func getRandomImage(images: [Image]) -> Image? {
         guard let randomImage = images.randomElement() else {
-            // ToDo: add default image
+            // ToDo: account for fatalError
             fatalError("No random image")
         }
         return randomImage

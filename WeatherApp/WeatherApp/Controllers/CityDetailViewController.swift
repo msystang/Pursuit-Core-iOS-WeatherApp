@@ -112,17 +112,20 @@ class CityDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TODO: Add private func to set up VC
-        self.view.backgroundColor = .white
-        self.navigationItem.rightBarButtonItem = saveFavoriteButton
-        self.navigationItem.title = "Forecast"
-        
+        setUpViewController()
         addSubviews()
         addConstraints()
+        //Add to view will appear
         loadImageData()
     }
     
     // MARK: - Private Functions
+    private func setUpViewController() {
+        self.view.backgroundColor = .white
+        self.navigationItem.rightBarButtonItem = saveFavoriteButton
+        self.navigationItem.title = "Forecast"
+    }
+    
     private func loadImageData() {
         let urlStr = ImageAPIClient.getSearchResultsURLStr(from: locationName)
         

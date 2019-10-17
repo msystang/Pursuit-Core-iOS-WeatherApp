@@ -48,9 +48,15 @@ class FavoriteImagesViewController: UIViewController {
         do {
             favorites = try ImagePersistenceHelper.manager.get()
         } catch {
-            //Add alert - could not load data
             print(error)
+            showLoadErrorAlert(error: error)
         }
+    }
+    
+    private func showLoadErrorAlert(error: Error) {
+        let alertVC = UIAlertController(title: "Error", message: "Could not load favorites: \(error).", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
     }
     
     // MARK: - UI Constraint Methods

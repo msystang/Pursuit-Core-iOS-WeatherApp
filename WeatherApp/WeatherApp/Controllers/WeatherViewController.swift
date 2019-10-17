@@ -15,7 +15,8 @@ class WeatherViewController: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
-        label.text = "Enter ZipCode or City"
+        label.text = "Welcome"
+        label.font = .boldSystemFont(ofSize: 18)
         label.numberOfLines = 0
         return label
     }()
@@ -23,7 +24,8 @@ class WeatherViewController: UIViewController {
     lazy var textField: UITextField = {
         let textField = UITextField()
         textField.delegate = self
-        textField.backgroundColor = .lightGray
+        textField.backgroundColor = .white
+        textField.placeholder = "Enter ZipCode or City"
         textField.textAlignment = .center
         textField.borderStyle = .roundedRect
         return textField
@@ -77,7 +79,7 @@ class WeatherViewController: UIViewController {
     // MARK: - Private Functions
     private func setUpViewController() {
         self.navigationItem.title = "Search"
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = #colorLiteral(red: 1, green: 0.9586635232, blue: 0.6891726851, alpha: 1)
     }
     
     private func setInitialValuesFromUserDefaults() {

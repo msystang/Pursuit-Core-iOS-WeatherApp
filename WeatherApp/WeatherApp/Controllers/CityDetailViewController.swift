@@ -136,7 +136,7 @@ class CityDetailViewController: UIViewController {
                 switch result {
                     case .failure(let error):
                         print(error)
-                        //TODO: - Add alert for image couldn't load, and default image
+                        self.showImageErrorAlert(error: error)
                     case .success(let imageDataFromURL):
                         let randomImage = Image.getRandomImage(images: imageDataFromURL)
                         self.convertImageFromData(randomImage: randomImage)
@@ -153,8 +153,9 @@ class CityDetailViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                     case .failure(let error):
-                    print(error)
-                    //TODO: - Add alert
+                        print(error)
+                        self.showImageErrorAlert(error: error)
+                        self.locationImageView.image = UIImage(named: "na")
                     case .success(let imageFromURL):
                         self.locationImageView.image = imageFromURL
                 }
@@ -163,7 +164,7 @@ class CityDetailViewController: UIViewController {
         
     }
     
-    private func showAlert(ifSaved: Saved) {
+    private func showSavedAlert(ifSaved: Saved) {
         switch ifSaved {
             case .yes:
                 let alert = UIAlertController(title: "Hey!", message: "This image is already saved in your favorites.", preferredStyle: .alert)
@@ -176,6 +177,12 @@ class CityDetailViewController: UIViewController {
         }
     }
     
+    private func showImageErrorAlert(error: Error) {
+        let alertVC = UIAlertController(title: "Error", message: "Could not load image: \(error).", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
+        
     // MARK: - UI Objc Functions
     @objc func saveFavoriteImage(sender: UIBarButtonItem) {
         if let existsInFavorites = currentImage.existsInFavorites() {
@@ -183,13 +190,13 @@ class CityDetailViewController: UIViewController {
                 case false:
                     do {
                         try ImagePersistenceHelper.manager.save(newImage: currentImage)
-                        showAlert(ifSaved: .no)
+                        showSavedAlert(ifSaved: .no)
                     } catch {
                         print(error)
                         //Add alert -- cannot save
                     }
                 case true:
-                    showAlert(ifSaved: .yes)
+                    showSavedAlert(ifSaved: .yes)
             }
         }
     }

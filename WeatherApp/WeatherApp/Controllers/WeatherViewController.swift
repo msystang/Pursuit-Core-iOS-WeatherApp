@@ -123,15 +123,15 @@ class WeatherViewController: UIViewController {
     }
     
     private func showLocationErrorAlert() {
-           let alertVC = UIAlertController(title: "Error", message: "Could not find location. Check your input.", preferredStyle: .alert)
-                      alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                      present(alertVC, animated: true, completion: nil)
+        let alertVC = UIAlertController(title: "Error", message: "Could not find location. Check your input.", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
        }
     
     private func showDataErrorAlert(error: Error) {
         let alertVC = UIAlertController(title: "Error", message: "Could not load weather data: \(error). Check your internet connection.", preferredStyle: .alert)
-                   alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                   present(alertVC, animated: true, completion: nil)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
     }
     
     private func updateLocationLabel() {

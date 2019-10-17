@@ -114,7 +114,5 @@ class WeatherAppTests: XCTestCase {
         
         XCTAssertTrue(testImages.count == 0, "Expected: 0, Got: \(testImages.count)")
     }
-    
-    // MARK: - Test UserDefaults Model?
 
 }

@@ -97,6 +97,8 @@ extension FavoriteImagesViewController: UITableViewDataSource {
         let favoriteImage = favorites[indexPath.row]
         let imageUrlStr = favoriteImage.url
         
+        cell.backgroundColor = #colorLiteral(red: 1, green: 0.9725163579, blue: 0.7653290629, alpha: 1)
+        
         ImageHelper.manager.getImage(urlStr: imageUrlStr) { (result) in
             DispatchQueue.main.async {
                 switch result {

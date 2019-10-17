@@ -125,7 +125,7 @@ class CityDetailViewController: UIViewController {
     
     // MARK: - Private Functions
     private func setUpViewController() {
-        self.view.backgroundColor = #colorLiteral(red: 1, green: 0.9586635232, blue: 0.6891726851, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 1, green: 0.9725163579, blue: 0.7653290629, alpha: 1)
         self.navigationItem.rightBarButtonItem = saveFavoriteButton
         self.navigationItem.title = "Forecast"
     }

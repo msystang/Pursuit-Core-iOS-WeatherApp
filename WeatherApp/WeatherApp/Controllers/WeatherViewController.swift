@@ -34,7 +34,7 @@ class WeatherViewController: UIViewController {
     
     lazy var weatherCollectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = #colorLiteral(red: 1, green: 0.9586635232, blue: 0.6891726851, alpha: 1)
+        collectionView.backgroundColor = #colorLiteral(red: 1, green: 0.9725163579, blue: 0.7653290629, alpha: 1)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: "weatherCell")
@@ -79,7 +79,7 @@ class WeatherViewController: UIViewController {
     // MARK: - Private Functions
     private func setUpViewController() {
         self.navigationItem.title = "Search"
-        self.view.backgroundColor = #colorLiteral(red: 1, green: 0.9586635232, blue: 0.6891726851, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 1, green: 0.9725163579, blue: 0.7653290629, alpha: 1)
     }
     
     private func setInitialValuesFromUserDefaults() {

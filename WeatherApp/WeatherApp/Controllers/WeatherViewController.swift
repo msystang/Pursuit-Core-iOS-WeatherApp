@@ -34,7 +34,7 @@ class WeatherViewController: UIViewController {
     
     lazy var weatherCollectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = #colorLiteral(red: 1, green: 0.9586635232, blue: 0.6891726851, alpha: 1)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: "weatherCell")
@@ -212,6 +212,8 @@ extension WeatherViewController: UICollectionViewDataSource {
         cell.highTempLabel.text = "High: \(dailyWeather.temperatureHigh) °F"
         cell.lowTempLabel.text = "Low: \(dailyWeather.temperatureLow) °F"
         
+        cell.backgroundColor = .white
+        
         return cell
     }
     
@@ -221,7 +223,7 @@ extension WeatherViewController: UICollectionViewDataSource {
 extension WeatherViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 250)
+        return CGSize(width: view.bounds.width * 0.7 , height: view.bounds.height * 0.3)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

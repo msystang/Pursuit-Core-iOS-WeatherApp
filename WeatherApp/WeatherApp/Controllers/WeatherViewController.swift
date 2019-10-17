@@ -35,7 +35,6 @@ class WeatherViewController: UIViewController {
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: "weatherCell")
         return collectionView
     }()
@@ -61,6 +60,8 @@ class WeatherViewController: UIViewController {
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //TODO: Add these in private func to set up VC
         self.navigationItem.title = "Search"
         self.view.backgroundColor = .white
         
@@ -69,6 +70,8 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: - Private Functions
+    
+    //TODO: Rename loadLocationFromSearch and rename fromZipCode param in helper
     private func loadLatLongFromZip() {
         ZipCodeHelper.getLatLong(fromZipCode: searchString ?? "") { (result) in
             DispatchQueue.main.async {

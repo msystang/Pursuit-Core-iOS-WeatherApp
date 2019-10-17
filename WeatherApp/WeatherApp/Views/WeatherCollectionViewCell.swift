@@ -9,7 +9,8 @@
 import UIKit
 
 class WeatherCollectionViewCell: UICollectionViewCell {
-    // make variables for cell objects (image, date, high, low temp labels)
+    
+    // MARK: - UI Lazy Objects
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -39,6 +40,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -50,11 +52,12 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    // MARK: - Lifecycle Functions
     override func prepareForReuse() {
          super.prepareForReuse()
     }
 
+    // MARK: - UI Constraint Methods
     private func addSubviews() {
         self.contentView.addSubview(dateLabel)
         self.contentView.addSubview(weatherImageView)

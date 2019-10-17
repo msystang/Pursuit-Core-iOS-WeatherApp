@@ -11,11 +11,9 @@ import Foundation
 class WeatherAPIClient {
     
     // MARK: - Static Properties
-    
     static let manager = WeatherAPIClient()
     
     // MARK: - Instance Methods
-    
     static func getSearchResultsURLStr(from latitude: String, longitude: String) -> String {
         return "https://api.darksky.net/forecast/\(Secrets.darkSkyAPIKey)/\(latitude),\(longitude)?exclude=[minutely,hourly,alerts,flags]"
     }
@@ -45,6 +43,5 @@ class WeatherAPIClient {
     }
     
     // MARK: - Private Properties and Initializers
-    
     private init() {}
 }

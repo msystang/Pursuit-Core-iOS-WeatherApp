@@ -7,8 +7,8 @@ enum LocationFetchingError: Error {
 }
 
 class ZipCodeHelper {
-    private init() {}
     
+    // MARK: - Static Methofs
     static func getLatLong(fromZipCode zipCode: String, completionHandler: @escaping (Result<(lat: Double, long: Double, location: String), LocationFetchingError>) -> Void) {
     
         let geocoder = CLGeocoder()
@@ -31,4 +31,7 @@ class ZipCodeHelper {
             }
         }
     }
+    
+    // MARK: - Private Initalizers
+    private init() {}
 }

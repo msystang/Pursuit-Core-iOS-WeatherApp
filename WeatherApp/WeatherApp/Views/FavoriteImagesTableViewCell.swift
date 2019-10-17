@@ -10,12 +10,14 @@ import UIKit
 
 class FavoriteImagesTableViewCell: UITableViewCell {
     
+    // MARK: - UI Lazy Objects
     lazy var favoriteImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
+    // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -27,6 +29,7 @@ class FavoriteImagesTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle Functions
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -34,7 +37,8 @@ class FavoriteImagesTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
+    // MARK: - UI Constraint Methods
     private func addSubviews() {
         self.contentView.addSubview(favoriteImageView)
     }

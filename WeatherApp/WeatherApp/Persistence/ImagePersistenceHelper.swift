@@ -9,8 +9,11 @@
 import Foundation
 
 class ImagePersistenceHelper {
+    
+    // MARK: - Static Properties
     static let manager = ImagePersistenceHelper()
     
+    // MARK: - Instance Methods
     func save(newImage: Image) throws {
         try persistenceHelper.save(newElement: newImage)
     }
@@ -23,6 +26,7 @@ class ImagePersistenceHelper {
         try persistenceHelper.delete(elementWith: urlStr)
     }
     
+    // MARK: - Private Properties and Initializers
     private let persistenceHelper = PersistenceManager<Image>(fileName: "favoriteImages.plist")
     
     private init() {}

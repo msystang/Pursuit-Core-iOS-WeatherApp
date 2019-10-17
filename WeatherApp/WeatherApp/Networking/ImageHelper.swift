@@ -42,7 +42,7 @@ class ImageHelper {
         } .resume()
     }
     
-    // MARK: - Private Properties and Initializers
+    // MARK: - Private Initializers
     private init() {}
 }
 

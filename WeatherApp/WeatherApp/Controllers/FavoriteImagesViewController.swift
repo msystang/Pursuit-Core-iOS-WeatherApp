@@ -10,6 +10,7 @@ import UIKit
 
 class FavoriteImagesViewController: UIViewController {
     
+    // MARK: - UI Lazy Objects
     lazy var favoritesTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(FavoriteImagesTableViewCell.self, forCellReuseIdentifier: "favoriteImagesCell")
@@ -18,12 +19,14 @@ class FavoriteImagesViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: - Internal Properties
     var favorites = [Image]() {
         didSet {
             favoritesTableView.reloadData()
         }
     }
     
+    // MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -36,15 +39,17 @@ class FavoriteImagesViewController: UIViewController {
         loadFavorites()
     }
     
+    // MARK: - Private Methods
     private func loadFavorites() {
         do {
             favorites = try ImagePersistenceHelper.manager.get()
         } catch {
+            //Add alert - could not load data
             print(error)
         }
-        
     }
     
+    // MARK: - UI Constraint Methods
     private func addSubviews() {
         view.addSubview(favoritesTableView)
     }
@@ -65,7 +70,7 @@ class FavoriteImagesViewController: UIViewController {
     }
 }
 
-
+// MARK: - TableView Delegate & DataSource Methods
 extension FavoriteImagesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
@@ -94,6 +99,5 @@ extension FavoriteImagesViewController: UITableViewDataSource {
         }
         return cell
     }
-    
     
 }

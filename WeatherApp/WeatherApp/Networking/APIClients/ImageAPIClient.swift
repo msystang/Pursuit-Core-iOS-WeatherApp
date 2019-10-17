@@ -11,17 +11,15 @@ import Foundation
 class ImageAPIClient {
     
     // MARK: - Static Properties
-    
     static let manager = ImageAPIClient()
     
     // MARK: - Instance Methods
-    
     static func getSearchResultsURLStr(from searchString: String) -> String {
         let formattedString = searchString.replacingOccurrences(of: " ", with: "+")
         
         return "https://pixabay.com/api/?key=\(Secrets.pixabayAPIKey)&q=\(formattedString)"
     }
-    
+
     func getImage(urlStr: String, completionHandler: @escaping (Result<[Image], AppError>) -> ())  {
         
         guard let url = URL(string: urlStr) else {
@@ -47,6 +45,5 @@ class ImageAPIClient {
     }
     
     // MARK: - Private Properties and Initializers
-    
     private init() {}
 }

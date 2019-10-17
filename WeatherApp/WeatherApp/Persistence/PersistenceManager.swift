@@ -9,6 +9,8 @@
 import Foundation
 
 class PersistenceManager<T: Codable> {
+
+    // MARK: - Public Methods
     func getObjects() throws -> [T] {
         guard let data = FileManager.default.contents(atPath: url.path) else {
             return []
@@ -30,16 +32,19 @@ class PersistenceManager<T: Codable> {
         try serializedData.write(to: url, options: Data.WritingOptions.atomic)
     }
     
+    // MARK: - Initializers
     init(fileName: String) {
         self.fileName = fileName
     }
     
+    // MARK: - Private Properties
     private let fileName: String
     
     private var url: URL {
         return filePathFromDocumentsDirectory(filename: fileName)
     }
     
+    // MARK: - Private Methods
     private func documentsDirectory() -> URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }

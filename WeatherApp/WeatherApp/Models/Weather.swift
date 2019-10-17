@@ -22,6 +22,7 @@ struct DailyWeatherResult: Codable {
 }
 
 struct Forecast: Codable {
+    // MARK: - Internal Properties
     private let time: Int
     let summary: String
     let icon: String
@@ -32,6 +33,7 @@ struct Forecast: Codable {
     let windSpeed: Double
     let precipProbability: Double
     
+    // MARK: - Computed Properties
     var formattedDate: String {
         let timeInterval = Date(timeIntervalSince1970: TimeInterval(time))
         

@@ -18,7 +18,7 @@ class WeatherAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    
+    // MARK: - Test Weather Model
     func testGetWeatherDataFromJSON() {
         // Arrange
         guard let jsonPath = Bundle.main.path(forResource: "weather", ofType: "json") else {
@@ -26,7 +26,6 @@ class WeatherAppTests: XCTestCase {
         }
         
         var jsonData = Data()
-        
         do {
             jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonPath))
         } catch {
@@ -35,7 +34,6 @@ class WeatherAppTests: XCTestCase {
         
         // Act
         var forecast = [Forecast]()
-            
         do {
             let weatherInfo = try Weather.decodeWeatherFromData(from: jsonData)
                 forecast = weatherInfo.daily.data
@@ -48,8 +46,7 @@ class WeatherAppTests: XCTestCase {
         XCTAssertTrue(forecast.count == 8, "Was expecting 8 elements, but found \(forecast.count)")
     }
     
-    
-    //TODO: Test image model!!!
+    // MARK: - Test Image Model
     func testGetImageDataFromJSON() {
         // Arrange
         guard let jsonPath = Bundle.main.path(forResource: "images", ofType: "json") else {
@@ -57,7 +54,6 @@ class WeatherAppTests: XCTestCase {
         }
         
         var jsonData = Data()
-        
         do {
             jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonPath))
         } catch {
@@ -66,7 +62,6 @@ class WeatherAppTests: XCTestCase {
         
         // Act
         var images = [Image]()
-            
         do {
             let imageInfo = try ImageWrapper.decodeImagesFromData(from: jsonData)
             images = imageInfo
@@ -76,10 +71,10 @@ class WeatherAppTests: XCTestCase {
         }
             
         // Assert
-        XCTAssertTrue(images.count == 20, "Was expecting 8 elements, but found \(images.count)")
+        XCTAssertTrue(images.count == 20, "Was expecting 20 elements, but found \(images.count)")
     }
     
-    
+    // MARK: - Test Persistence
     private var testImages = [Image]()
     private let imageOne = Image(url: "testUrlOne")
     private let imageTwo = Image(url: "testUrlTwo")
@@ -120,5 +115,6 @@ class WeatherAppTests: XCTestCase {
         XCTAssertTrue(testImages.count == 0, "Expected: 0, Got: \(testImages.count)")
     }
     
+    // MARK: - Test UserDefaults Model?
 
 }

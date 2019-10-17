@@ -97,16 +97,12 @@ class CityDetailViewController: UIViewController {
         return barButton
     }()
 
-    
-    
     // MARK: - Private Properties
-    
     var selectedForecast: Forecast!
     var locationName: String!
     var currentImage: Image!
     
     // MARK: - Private Enums
-    
     private enum Saved {
         case yes
         case no
@@ -114,10 +110,10 @@ class CityDetailViewController: UIViewController {
     
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
-    
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         
+        //TODO: Add private func to set up VC
+        self.view.backgroundColor = .white
         self.navigationItem.rightBarButtonItem = saveFavoriteButton
         self.navigationItem.title = "Forecast"
         
@@ -127,7 +123,6 @@ class CityDetailViewController: UIViewController {
     }
     
     // MARK: - Private Functions
-
     private func loadImageData() {
         let urlStr = ImageAPIClient.getSearchResultsURLStr(from: locationName)
         
@@ -136,7 +131,7 @@ class CityDetailViewController: UIViewController {
                 switch result {
                     case .failure(let error):
                         print(error)
-                        //TODO: - Add alert
+                        //TODO: - Add alert for image couldn't load, and default image
                     case .success(let imageDataFromURL):
                         let randomImage = Image.getRandomImage(images: imageDataFromURL)
                         self.convertImageFromData(randomImage: randomImage)
@@ -177,23 +172,21 @@ class CityDetailViewController: UIViewController {
     }
     
     // MARK: - UI Objc Functions
-    
     @objc func saveFavoriteImage(sender: UIBarButtonItem) {
         if let existsInFavorites = currentImage.existsInFavorites() {
-                   switch existsInFavorites {
-                       case false:
-                           do {
-                               try ImagePersistenceHelper.manager.save(newImage: currentImage)
-                               print("saved image")
-                               showAlert(ifSaved: .no)
-                           } catch {
-                               print(error)
-                           }
-                       case true:
-                           showAlert(ifSaved: .yes)
-                   }
-               }
-
+            switch existsInFavorites {
+                case false:
+                    do {
+                        try ImagePersistenceHelper.manager.save(newImage: currentImage)
+                        showAlert(ifSaved: .no)
+                    } catch {
+                        print(error)
+                        //Add alert -- cannot save
+                    }
+                case true:
+                    showAlert(ifSaved: .yes)
+            }
+        }
     }
     
     // MARK: - UI Object Constraints
